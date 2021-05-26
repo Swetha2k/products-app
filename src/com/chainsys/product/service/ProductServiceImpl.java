@@ -49,6 +49,16 @@ public class ProductServiceImpl implements ProductService {
 			return Product;
 		}
 	}
+	
+	@Override
+	public Product findByDate(LocalDate date) throws ProductNotFoundException {
+		Product Product = dao.findByDate(date);
+		if (Product == null) {
+			throw new ProductNotFoundException("Product Name Not Found");
+		} else {
+			return Product;
+		}
+	}
 
 	@Override
 	public void save(Product Product) {

@@ -26,7 +26,8 @@ public class ProductClient {
 		System.out.println(" 1. Find All Products \n 2. Find the Product By Id\n "
 				+ "3. Find the Product By Name\n 4. Update the Product Name Based on the Id \n "
 				+ "5. Update the Expiry date Based on the Id \n 6.Adding a Product \n 7. Deleting a Product\n"
-				+ "8. Find Name of All Products" );
+				+ " 8. Find Name of All Products\n 9. Deleting a Product By Expiry Date\n 10."
+				+ "Find the Product By Date" );
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
 		List<String> nameList;
@@ -36,6 +37,7 @@ public class ProductClient {
 			productSet = service.findAll();
 			System.out.println(productSet);
 			break;
+			
 		case 2:
 			System.out.println("Find the Product By Id");
 			System.out.println("Enter the Product Id");
@@ -46,6 +48,7 @@ public class ProductClient {
 			} catch (ProductNotFoundException e) {
 			}
 			break;
+			
 		case 3:
 			System.out.println("Find the Product By Name");
 			System.out.println("Enter the Product Name");
@@ -56,6 +59,7 @@ public class ProductClient {
 			} catch (ProductNotFoundException e) {
 			}
 			break;
+			
 		case 4:
 			System.out.println("Update the Product Name Based on the Id");
 			date = "06/05/2021";
@@ -69,6 +73,7 @@ public class ProductClient {
 
 			}
 			break;
+			
 		case 5:
 			System.out.println("Update the Expiry date Based on the Id");
 			date = "07/07/2021";
@@ -82,6 +87,7 @@ public class ProductClient {
 
 			}
 			break;
+			
 		case 6:
 			System.out.println("Adding a Product");
 			date = "06/05/2021";
@@ -91,6 +97,7 @@ public class ProductClient {
 			productSet = service.findAll();
 			System.out.println(productSet);
 			break;
+			
 		case 7:
 			System.out.println("Deleting a Product");
 			System.out.println("Enter the Product Id");
@@ -102,11 +109,13 @@ public class ProductClient {
 			} catch (ProductNotFoundException e) {
 			}
 			break;
+			
 		case 8:
 			System.out.println("Display Name of All Products");
 			nameList = service.findAllName();
 			System.out.println(nameList);
 			break;
+			
 		case 9:
 			System.out.println("Deleting a Product By Expiry Date");
 			
@@ -120,6 +129,19 @@ public class ProductClient {
 				System.out.println(productSet);
 			} catch (ProductNotFoundException e) {
 			}
+			break;
+			
+		case 10:
+			System.out.println("Find the Product By Date");
+			System.out.println("Enter the Product Date");
+			date = scanner.next();
+			dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			try {
+				Product product = service.findByDate(LocalDate.parse(date,dateFormat));
+				System.out.println(product);
+			} catch (ProductNotFoundException e) {
+			}
+			break;
 		default:
 			break;
 

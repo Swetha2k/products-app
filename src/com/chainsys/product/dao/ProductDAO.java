@@ -10,8 +10,6 @@ public interface ProductDAO {
 	Set<Product> findAll();
 
 	List<String> findAllName();
-
-//	Product findByDate(String date);
 	
 	Product findById(int id);
 	

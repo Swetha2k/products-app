@@ -12,6 +12,7 @@ public interface ProductService {
 
 	List<String> findAllName();
 
+	Product findByDate(LocalDate date) throws ProductNotFoundException;
 
 	Product findById(int id) throws ProductNotFoundException;
 
@@ -22,7 +23,6 @@ public interface ProductService {
 	void delete(int id) throws ProductNotFoundException;
 	
 	void delete(LocalDate date) throws ProductNotFoundException;
-
 
 	Product findByName(String name) throws ProductNotFoundException;
 
