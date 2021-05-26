@@ -11,6 +11,9 @@ public interface ProductDAO {
 
 	List<String> findAllName();
 	
+	List<Integer> findAllId();
+
+	
 	Product findById(int id);
 	
 	Product findByName(String name);
@@ -24,6 +27,7 @@ public interface ProductDAO {
 	void delete(int id);
 	
 	void delete(String name);
+
 
 	Product findByDate(LocalDate date);
 

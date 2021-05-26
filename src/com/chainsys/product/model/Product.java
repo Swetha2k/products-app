@@ -12,7 +12,9 @@ public class Product {
 	}
 	public Product(String name) {
 		this.name = name;
-
+	}
+	public Product(int id) {
+		this.id = id;
 	}
 	public Product(int id, String name, LocalDate expiryDate) {
 		this.id = id;

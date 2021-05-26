@@ -27,10 +27,12 @@ public class ProductClient {
 				+ "3. Find the Product By Name\n 4. Update the Product Name Based on the Id \n "
 				+ "5. Update the Expiry date Based on the Id \n 6.Adding a Product \n 7. Deleting a Product\n"
 				+ " 8. Find Name of All Products\n 9. Deleting a Product By Expiry Date\n 10."
-				+ "Find the Product By Date\n 11. Deleting a Product by Name" );
+				+ "Find the Product By Date\n 11. Deleting a Product by Name\n "
+				+ "12. Display Id of All Products" );
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
 		List<String> nameList;
+		List<Integer> idList;
 		switch (choice) {
 		case 1:
 			System.out.println("Find All Products");
@@ -152,6 +154,12 @@ public class ProductClient {
 				System.out.println(productSet);
 			} catch (ProductNotFoundException e) {
 			}
+			break;
+			
+		case 12:
+			System.out.println("Display Id of All Products");
+			idList = service.findAllId();
+			System.out.println(idList);
 			break;
 			
 		default:
