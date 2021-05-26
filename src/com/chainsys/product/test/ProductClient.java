@@ -27,7 +27,7 @@ public class ProductClient {
 				+ "3. Find the Product By Name\n 4. Update the Product Name Based on the Id \n "
 				+ "5. Update the Expiry date Based on the Id \n 6.Adding a Product \n 7. Deleting a Product\n"
 				+ " 8. Find Name of All Products\n 9. Deleting a Product By Expiry Date\n 10."
-				+ "Find the Product By Date" );
+				+ "Find the Product By Date\n 11. Deleting a Product by Name" );
 		Scanner scanner = new Scanner(System.in);
 		int choice = scanner.nextInt();
 		List<String> nameList;
@@ -142,6 +142,18 @@ public class ProductClient {
 			} catch (ProductNotFoundException e) {
 			}
 			break;
+		case 11:
+			System.out.println("Deleting a Product by Name");
+			System.out.println("Enter the Product Name");
+			name = scanner.next();
+			try {
+				service.delete(name);
+				productSet = service.findAll();
+				System.out.println(productSet);
+			} catch (ProductNotFoundException e) {
+			}
+			break;
+			
 		default:
 			break;
 
