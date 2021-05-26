@@ -13,12 +13,13 @@ import com.chainsys.product.service.ProductService;
 import com.chainsys.product.service.ProductServiceImpl;
 
 public class ProductClient {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ProductNotFoundException {
 
 		Set<Product> productSet;
 		ProductService service = new ProductServiceImpl();
 		String date;
 		String name;
+		
 		DateTimeFormatter dateFormat;
 		int id;
 		System.out.println("Enter the choice");
@@ -100,12 +101,26 @@ public class ProductClient {
 				System.out.println(productSet);
 			} catch (ProductNotFoundException e) {
 			}
-		default:
 			break;
 		case 8:
 			System.out.println("Display Name of All Products");
 			nameList = service.findAllName();
 			System.out.println(nameList);
+			break;
+		case 9:
+			System.out.println("Deleting a Product By Expiry Date");
+			
+			try {
+				System.out.println("Enter the Product Expiry Date");
+				date = scanner.next();
+				dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+				service.delete(LocalDate.parse(date,dateFormat));
+				productSet = service.findAll();
+				System.out.println(productSet);
+			} catch (ProductNotFoundException e) {
+			}
+		default:
 			break;
 
 		}
